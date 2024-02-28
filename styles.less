@@ -1,43 +1,13 @@
 
-.item1 {
-  grid-area: header;
-}
+@grey: #333333;
+@grey1: #454445;
+@grey2: #A8A8A9;
+@white: #F9FAFB;
+@white1: #F5FFFA;
+@purple: #5B2BC9;
+@blue: #428ADC;
 
-.item2 {
-  grid-area: left;
-}
-
-.item3 {
-  grid-area: right;
-}
-
-.item4 {
-  grid-area: section1;
-}
-
-.item5 {
-  grid-area: section2;
-}
-
-.item6 {
-  grid-area: section3;
-}
-
-.item7 {
-  grid-area: footer;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-areas:
-        'header'
-        'section1'
-        'section2'
-        'section3'
-        'footer';
-}
-
-html, body {
+html {
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -45,15 +15,9 @@ html, body {
   font-variation-settings: "wdth" 100;
 }
 
-html {
-}
-
 body {
-  width: 80%;
+  .width80to100();
   margin: 0 auto;
-  @media screen and (max-width: 820px) {
-    width: 100%;
-  }
 }
 
 header {
@@ -87,11 +51,8 @@ header h1 {
 
 #section1-container {
   display: flex;
-  width: 80%;
-  align-items: center;
-  @media screen and (max-width: 820px) {
-    width: 100%;
-  }
+  .width80to100();
+  .fdirection();
 }
 
 #section1-left {
@@ -106,6 +67,9 @@ header h1 {
   margin: 0 auto;
   width: 70%;
   border-radius: 12px;
+  @media screen and (max-width: 820px) {
+    margin-left: 10%
+  }
 }
 
 #section1-whitebox h2 {
@@ -126,10 +90,17 @@ header h1 {
   display: flex;
   gap: 10px;
   height: 100px;
+  .fdirection()
+}
+
+#section1-buttons-container button {
+  .button();
+  .flex50();
 }
 
 #section1-right {
   flex: 50%;
+  margin: auto;
 }
 
 #section1-right img {
@@ -139,20 +110,16 @@ header h1 {
 }
 
 #section2 {
-  background: #5B2BC9;
+  background: @purple;
 }
 
 #section2-container {
   width: 80%;
   margin: 0 auto;
-  //@media screen and (max-width: 800px) {
-  //  width: 90%;
-  //  margin: 0 auto;
-  //}
 }
 
 #section2-upper {
-  color: white;
+  color: @white;
   padding-top: 80px;
   padding-bottom: 40px;
 }
@@ -170,23 +137,23 @@ header h1 {
 #section2-lower {
   display: flex;
   height: 100%;
-  color: white;
+  color: @white;
   padding-bottom: 60px;
   gap: 5%;
+  .fdirection()
 }
 
-#section2-lower div {
+.steps {
+  .flex33();
 }
 
 #section3 {
-  /*    padding: 100px 100px 100px 127px;*/
-  background: #428ADC;
+  background: @blue;
   height: 300px;
 }
 
 #section3-whitebox {
-  /*padding: 42px;*/
-  background: white;
+  background: @white;
   border-radius: 12px;
   width: 75%;
   height: 180px;
@@ -194,7 +161,7 @@ header h1 {
   display: flex;
   align-items: center;
   text-align: center;
-  /*vertical-align: center;*/
+  .fdirection()
 }
 
 #section3-whitebox-left {
@@ -202,7 +169,7 @@ header h1 {
 }
 
 #section3-whitebox-left h3 {
-  color: #5520CF;
+  color: @purple;
 }
 
 #section3-whitebox-right {
@@ -211,7 +178,7 @@ header h1 {
 
 #section3-whitebox-right button {
   padding: 8px 24px;
-  border: 1px #94A3B8 solid;
+  border: 1px @white1 solid;
   gap: 4px;
   text-align: center;
   color: black;
@@ -232,7 +199,7 @@ footer {
   width: 80%;
   margin: 0 auto;
   padding-top: 20px;
-  color: #333333;
+  color: @grey;
 }
 
 #footer-left {
@@ -266,6 +233,52 @@ footer {
   font-weight: 400;
 }
 
+// classes
+
+.button {
+  text-align: center;
+  height: 40px;
+  padding: 0.3em 1.2em;
+  border-radius: 8px;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  background: @white;
+  color: @grey;
+  border-radius: 50%;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  display: flex;
+}
+
+.flex50 {
+  flex: 50%;
+}
+
+.flex33 {
+  flex: 33%;
+}
+
+.fdirection {
+  flex-direction: row;
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+  }
+}
+
+.width80to100 {
+  width: 80%;
+  @media screen and (max-width: 820px) {
+    width: 100%;
+  }
+}
+
 .bg-purple {
   background: #5B2BC9;
 }
@@ -284,51 +297,4 @@ footer {
 
 .purple {
   color: #5B2BC9
-}
-
-.button {
-  text-align: center;
-  height: 40px;
-  padding: 0.3em 1.2em;
-  /*margin-left: 1em;*/
-  border-radius: 8px;
-  /*box-sizing: border-box;*/
-  flex-shrink: 0;
-  font-weight: 700;
-}
-
-.circle {
-  width: 32px;
-  height: 32px;
-  background: white;
-  border-radius: 50%;
-  justify-content: center;
-  text-align: center;
-  color: black;
-  font-size: 1.2em;
-  font-weight: 500;
-  display: flex;
-}
-
-.flex50 {
-  flex: 50%;
-}
-
-.flex33 {
-  flex: 33%;
-}
-
-.fdirection {
-  flex-direction: row;
-}
-
-@media screen and (max-width: 820px) {
-  .fdirection {
-    flex-direction: column !important;
-  }
-
-  .flex50 {
-  }
-
-  /*.flex33 {}*/
 }
