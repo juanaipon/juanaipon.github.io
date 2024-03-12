@@ -48,7 +48,6 @@ header h1 {
 }
 
 #section1 {
-
 }
 
 #section1-container {
@@ -70,9 +69,6 @@ header h1 {
   margin: 0 auto;
   width: 70%;
   border-radius: 12px;
-  @media screen and (max-width: 820px) {
-    margin: 0 auto;
-  }
 }
 
 #section1-whitebox h2 {
@@ -170,7 +166,6 @@ header h1 {
   background: white;
   border-radius: 12px;
   width: 80%;
-  //height: 180px;
   display: flex;
   text-align: center;
   .fdirection()
@@ -233,9 +228,7 @@ footer {
 
 #footer-left {
   flex: 30%;
-  @media screen and (max-width: 820px) {
-    flex: 50%
-  }
+  .flexto50();
 }
 
 #footer-left h3 {
@@ -246,9 +239,7 @@ footer {
   flex: 70%;
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 820px) {
-    flex: 50%
-  }
+  .flexto50();
 }
 
 #footer-right h3 {
@@ -263,7 +254,6 @@ footer {
 }
 
 // classes
-
 .button {
   text-align: center;
   height: 40px;
@@ -308,8 +298,14 @@ footer {
   }
 }
 
+.flexto50 {
+  @media screen and (max-width: 820px) {
+    flex: 50%
+  }
+}
+
 .bg-purple {
-  background: #5B2BC9;
+  background: @purple;
 }
 
 .bg-white {
@@ -329,5 +325,5 @@ footer {
 }
 
 .purple {
-  color: #5B2BC9
+  color: @purple
 }
